@@ -1,4 +1,6 @@
 set tabstop=4
+set expandtab
+
 set si
 set nu
 if has("autocmd")
