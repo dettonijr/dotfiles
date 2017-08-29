@@ -1,5 +1,5 @@
 force_color_prompt=yes
-source git-completion.bash
+source .bash/git-completion.bash
 
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
