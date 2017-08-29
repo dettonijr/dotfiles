@@ -1,0 +1,7 @@
+[diff]
+	tool = vimdiff
+[user]
+	name = Claudio Dettoni
+    email = cd611@cl.cam.ac.uk
+[core]
+    pager = less -FXRS -x4
