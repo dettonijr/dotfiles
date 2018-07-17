@@ -2,7 +2,7 @@ syn on
 set tabstop=4
 set expandtab
 
-"set si
+set ai
 set nu
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -20,7 +20,8 @@ let g:ycm_semantic_triggers = {
     \ 'elm' : ['.'],
     \}
 
-let g:ycm_global_ycm_extra_conf = "$HOME/.vim/.ycm_extra_conf.py"
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_enable_diagnostic_highlighting = 0
 
 autocmd BufWritePost *.py call Flake8()
