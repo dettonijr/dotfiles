@@ -34,10 +34,10 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   -- colorschemes
-  {'folke/tokyonight.nvim'},
-  {'sainnhe/everforest'},
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-  {'EdenEast/nightfox.nvim'},
+  { 'folke/tokyonight.nvim' },
+  { 'sainnhe/everforest' },
+  { "catppuccin/nvim",       name = "catppuccin", priority = 1000 },
+  { 'EdenEast/nightfox.nvim' },
 
   -- File Search
   {
@@ -51,7 +51,6 @@ local plugins = {
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
       -- vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
       -- vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
-
     end
   },
 
@@ -93,13 +92,13 @@ local plugins = {
   {
     "williamboman/mason.nvim",
     config = function()
-      require"mason".setup()
+      require "mason".setup()
     end
   },
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
-      require"mason-lspconfig".setup({
+      require "mason-lspconfig".setup({
         ensure_installed = { "lua_ls", 'ts_ls', 'elixirls' }
       })
     end
@@ -107,18 +106,18 @@ local plugins = {
   {
     'neovim/nvim-lspconfig',
     config = function()
-      require'lspconfig'.elixirls.setup {
+      require 'lspconfig'.elixirls.setup {
         cmd = { "/Users/dettonijr/elixir-ls/language_server.sh" },
       }
-      require'lspconfig'.ts_ls.setup {}
-      require'lspconfig'.lua_ls.setup {
+      require 'lspconfig'.ts_ls.setup {}
+      require 'lspconfig'.lua_ls.setup {
         on_init = function(client)
-           --if client.workspace_folders then
-           --  local path = client.workspace_folders[1].name
-           --  if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
-           --    return
-           --  end
-           --end
+          --if client.workspace_folders then
+          --  local path = client.workspace_folders[1].name
+          --  if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
+          --    return
+          --  end
+          --end
 
           client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
             runtime = {
@@ -153,7 +152,7 @@ local plugins = {
       vim.api.nvim_create_autocmd('LspAttach', {
         desc = 'LSP actions',
         callback = function(event)
-          local opts = {buffer = event.buf}
+          local opts = { buffer = event.buf }
 
           vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
           vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
@@ -163,7 +162,7 @@ local plugins = {
           vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
           vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
           vim.keymap.set('n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-          vim.keymap.set({'n', 'x'}, '<leader>cf', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+          vim.keymap.set({ 'n', 'x' }, '<leader>cf', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
           vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
           vim.keymap.set('n', '<leader>e', ':lua vim.diagnostic.open_float(0, {scope="line"})<cr>', opts)
         end,
@@ -172,8 +171,32 @@ local plugins = {
   },
 
 
-  {'hrsh7th/cmp-nvim-lsp'},
-  {'hrsh7th/nvim-cmp'},
+  { 'hrsh7th/cmp-nvim-lsp' },
+  { 'hrsh7th/nvim-cmp' },
+
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = {
+          enabled = true,
+          auto_trigger = false,
+          hide_during_completion = true,
+          debounce = 75,
+          keymap = {
+            accept = "<Tab>",
+            accept_word = false,
+            accept_line = "<C-l>",
+            next = "<C-]>",
+            prev = "<C-[>",
+            dismiss = "<ESC>",
+          },
+        },
+      })
+    end,
+  }
 }
 
 require('lazy').setup(plugins)
