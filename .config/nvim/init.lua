@@ -5,6 +5,7 @@ vim.cmd("set shiftwidth=2")
 vim.cmd("set expandtab")
 vim.cmd("set ai")
 vim.cmd("set nu")
+vim.cmd("set scrolloff=10")
 vim.g.mapleader = ","
 
 
