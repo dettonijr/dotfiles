@@ -8,6 +8,11 @@ vim.cmd("set nu")
 vim.g.mapleader = ","
 
 
+vim.api.nvim_create_autocmd('BufReadPost', { command = "silent! normal! g`\"zz" })
+vim.keymap.set('n', '<C-j>', '5<C-e>5j')
+vim.keymap.set('n', '<C-k>', '5<C-y>5k')
+
+
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 -- Auto-install lazy.nvim if not present
@@ -101,7 +106,9 @@ local plugins = {
   {
     'neovim/nvim-lspconfig',
     config = function()
-      require'lspconfig'.elixirls.setup {}
+      require'lspconfig'.elixirls.setup {
+        cmd = { "/Users/dettonijr/elixir-ls/language_server.sh" },
+      }
       require'lspconfig'.ts_ls.setup {}
       require'lspconfig'.lua_ls.setup {
         on_init = function(client)
@@ -122,9 +129,9 @@ local plugins = {
             workspace = {
               checkThirdParty = false,
               library = {
-                vim.env.VIMRUNTIME
+                vim.env.VIMRUNTIME,
                 -- Depending on the usage, you might want to add additional paths here.
-                -- "${3rd}/luv/library"
+                "${3rd}/luv/library"
                 -- "${3rd}/busted/library",
               }
               -- or pull in all of 'runtimepath'. NOTE: this is a lot slower and will cause issues when working on your own configuration (see https://github.com/neovim/nvim-lspconfig/issues/3189)
@@ -154,9 +161,10 @@ local plugins = {
           vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
           vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
           vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-          vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-          vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-          vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+          vim.keymap.set('n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+          vim.keymap.set({'n', 'x'}, '<leader>cf', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+          vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+          vim.keymap.set('n', '<leader>e', ':lua vim.diagnostic.open_float(0, {scope="line"})<cr>', opts)
         end,
       })
     end
