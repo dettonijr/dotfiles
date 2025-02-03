@@ -12,6 +12,7 @@ vim.g.mapleader = ","
 vim.api.nvim_create_autocmd('BufReadPost', { command = "silent! normal! g`\"zz" })
 vim.keymap.set('n', '<C-j>', '5<C-e>5j')
 vim.keymap.set('n', '<C-k>', '5<C-y>5k')
+vim.keymap.set('n', '<leader>vc', '<cmd>tabnew ~/.config/nvim/init.lua<cr>')
 
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
@@ -164,7 +165,7 @@ local plugins = {
           vim.keymap.set('n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
           vim.keymap.set({ 'n', 'x' }, '<leader>cf', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
           vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-          vim.keymap.set('n', '<leader>e', ':lua vim.diagnostic.open_float(0, {scope="line"})<cr>', opts)
+          vim.keymap.set('n', '<leader>cd', ':lua vim.diagnostic.open_float(0, {scope="line"})<cr>', opts)
         end,
       })
     end
@@ -186,7 +187,7 @@ local plugins = {
           hide_during_completion = true,
           debounce = 75,
           keymap = {
-            accept = "<Tab>",
+            accept = "<CR>",
             accept_word = false,
             accept_line = "<C-l>",
             next = "<C-]>",
