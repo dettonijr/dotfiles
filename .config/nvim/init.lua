@@ -8,6 +8,20 @@ vim.cmd("set nu")
 vim.cmd("set scrolloff=10")
 vim.g.mapleader = ","
 
+vim.opt.undofile = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.cursorline = true
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 2
+vim.opt.foldnestmax = 4
+vim.opt.foldcolumn = "0"
+
 
 vim.api.nvim_create_autocmd('BufReadPost', { command = "silent! normal! g`\"zz" })
 vim.keymap.set('n', '<C-j>', '5<C-e>5j')
@@ -77,9 +91,12 @@ local plugins = {
   -- colorschemes
   { 'folke/tokyonight.nvim' },
   { 'sainnhe/everforest' },
-  { "catppuccin/nvim",       name = "catppuccin", priority = 1000 },
+  { "catppuccin/nvim",              name = "catppuccin", priority = 1000 },
   { 'EdenEast/nightfox.nvim' },
-
+  { 'Mofiqul/vscode.nvim' },
+  { 'scottmckendry/cyberdream.nvim' },
+  { 'sainnhe/sonokai' },
+  { 'ribru17/bamboo.nvim' },
 
   -- File Search
   {
@@ -189,6 +206,7 @@ local plugins = {
         build = "make install_jsregexp"
       }
     },
+
     config = function()
       local cmp = require 'cmp'
       cmp.setup({
