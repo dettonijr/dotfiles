@@ -96,6 +96,9 @@ local plugins = {
   { 'scottmckendry/cyberdream.nvim' },
   { 'sainnhe/sonokai' },
   { 'ribru17/bamboo.nvim' },
+  { 'tiagovla/tokyodark.nvim' },
+  { 'morhetz/gruvbox' },
+  { 'rebelot/kanagawa.nvim' },
 
   -- File Search
   {
@@ -202,7 +205,12 @@ local plugins = {
         -- follow latest release.
         version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
         -- install jsregexp (optional!).
-        build = "make install_jsregexp"
+        build = "make install_jsregexp",
+        dependencies = { "rafamadriz/friendly-snippets" },
+        config = function()
+          require 'luasnip'.filetype_extend("ex", { "elixir" })
+        end
+
       }
     },
 
@@ -313,12 +321,42 @@ local plugins = {
         },
       })
     end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("treesitter-context").setup()
+    end
+  },
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
+  },
+  {
+    "vague2k/huez.nvim",
+    -- if you want registry related features, uncomment this
+    -- import = "huez-manager.import"
+    branch = "stable",
+    event = "UIEnter",
+    config = function()
+      require("huez").setup({})
+    end,
+  },
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require("lualine").setup({
+        options = {
+          icons_enabled = true
+        }
+      })
+    end,
   }
 }
 
 require('lazy').setup(plugins)
-
-vim.cmd.colorscheme "catppuccin"
-vim.cmd.colorscheme "tokyonight"
-vim.cmd.colorscheme "everforest"
-vim.cmd.colorscheme "nightfox"
