@@ -13,6 +13,7 @@ return {
 
   {
     "vague2k/huez.nvim",
+    enabled = vim.g.vscode == nil,
     -- if you want registry related features, uncomment this
     -- import = "huez-manager.import"
     branch = "stable",

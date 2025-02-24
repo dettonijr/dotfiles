@@ -41,12 +41,14 @@ local lsp_configurations = {
 return {
   {
     "williamboman/mason.nvim",
+    enabled = vim.g.vscode == nil,
     config = function()
       require "mason".setup()
     end
   },
   {
     "williamboman/mason-lspconfig.nvim",
+    enabled = vim.g.vscode == nil,
     config = function()
       require "mason-lspconfig".setup({
         ensure_installed = { "lua_ls", 'ts_ls', 'elixirls' }
@@ -55,6 +57,7 @@ return {
   },
   {
     'neovim/nvim-lspconfig',
+    enabled = vim.g.vscode == nil,
     config = function()
       -- Reserve a space in the gutter
       -- This will avoid an annoying layout shift in the screen
@@ -85,6 +88,7 @@ return {
 
   {
     'hrsh7th/nvim-cmp',
+    enabled = vim.g.vscode == nil,
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'neovim/nvim-lspconfig',

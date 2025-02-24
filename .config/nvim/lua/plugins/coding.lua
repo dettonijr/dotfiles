@@ -2,6 +2,7 @@ return {
   -- Syntax highlighting
   {
     "nvim-treesitter/nvim-treesitter",
+    enabled = vim.g.vscode == nil,
     build = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup({
@@ -16,6 +17,7 @@ return {
   -- Copilot
   {
     "zbirenbaum/copilot.lua",
+    enabled = vim.g.vscode == nil,
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
@@ -41,6 +43,7 @@ return {
   -- Context lines on top
   {
     "nvim-treesitter/nvim-treesitter-context",
+    enabled = vim.g.vscode == nil,
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
       require("treesitter-context").setup()
@@ -50,9 +53,21 @@ return {
   -- Auto pair "" [] ()
   {
     'windwp/nvim-autopairs',
+    enabled = vim.g.vscode == nil,
     event = "InsertEnter",
     config = true
     -- use opts = {} for passing setup options
     -- this is equivalent to setup({}) function
   },
+
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+        require("nvim-surround").setup({
+            -- Configuration here, or leave empty to use defaults
+        })
+    end
+  }
 }
