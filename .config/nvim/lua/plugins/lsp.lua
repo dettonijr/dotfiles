@@ -89,6 +89,8 @@ return {
           vim.keymap.set({ 'n', 'x' }, '<leader>cf', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
           vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
           vim.keymap.set('n', '<leader>cd', ':lua vim.diagnostic.open_float(0, {scope="line"})<cr>', opts)
+          vim.keymap.set("n", "]g", vim.diagnostic.goto_next)
+          vim.keymap.set("n", "[g", vim.diagnostic.goto_prev)
         end,
       })
     end
