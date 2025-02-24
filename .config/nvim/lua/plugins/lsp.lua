@@ -39,15 +39,20 @@ local lsp_configurations = {
 }
 
 return {
+  -- Repo and package manager with LSPs, linters, formatters, DAPs
   {
     "williamboman/mason.nvim",
+    version = "*",
     enabled = vim.g.vscode == nil,
     config = function()
       require "mason".setup()
     end
   },
+
+  -- Makes sure languages servers are installed with Mason
   {
     "williamboman/mason-lspconfig.nvim",
+    version = "*",
     enabled = vim.g.vscode == nil,
     config = function()
       require "mason-lspconfig".setup({
@@ -55,8 +60,11 @@ return {
       })
     end
   },
+
+  -- configures nvim to use LSP servers
   {
     'neovim/nvim-lspconfig',
+    version = "*",
     enabled = vim.g.vscode == nil,
     config = function()
       -- Reserve a space in the gutter
@@ -86,8 +94,10 @@ return {
     end
   },
 
+  -- autocomplete and snippets
   {
     'hrsh7th/nvim-cmp',
+    version = "*",
     enabled = vim.g.vscode == nil,
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',

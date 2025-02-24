@@ -3,7 +3,7 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     enabled = vim.g.vscode == nil, -- vim.g.vscode,
-    tag = '0.1.8',
+    version = "*",
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       local builtin = require('telescope.builtin')
