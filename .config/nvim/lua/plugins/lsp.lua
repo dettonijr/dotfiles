@@ -35,6 +35,9 @@ local lsp_configurations = {
     settings = {
       Lua = {}
     }
+  },
+  clangd = {
+    cmd = { "clangd", "--compile-commands-dir=." },
   }
 }
 
@@ -56,7 +59,7 @@ return {
     enabled = vim.g.vscode == nil,
     config = function()
       require "mason-lspconfig".setup({
-        ensure_installed = { "lua_ls", 'ts_ls', 'elixirls' }
+        ensure_installed = { "lua_ls", 'ts_ls', 'elixirls', 'clangd' }
       })
     end
   },
