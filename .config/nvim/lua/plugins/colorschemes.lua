@@ -11,6 +11,7 @@ return {
   { 'morhetz/gruvbox' },
   { 'rebelot/kanagawa.nvim' },
   { 'NLKNguyen/papercolor-theme' },
+  { 'TaDaa/vimade' },
 
   {
     "vague2k/huez.nvim",
