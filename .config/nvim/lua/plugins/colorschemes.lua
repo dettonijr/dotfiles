@@ -10,6 +10,7 @@ return {
   { 'tiagovla/tokyodark.nvim' },
   { 'morhetz/gruvbox' },
   { 'rebelot/kanagawa.nvim' },
+  { 'NLKNguyen/papercolor-theme' },
 
   {
     "vague2k/huez.nvim",
