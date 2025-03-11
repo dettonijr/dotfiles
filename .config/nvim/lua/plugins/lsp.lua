@@ -44,8 +44,6 @@ local lsp_configurations = function()
     angularls = {
       root_dir = util.root_pattern('angular.json', 'project.json')
     },
-    html = {
-    },
     eslint = {
       on_attach = function(client, bufnr)
         vim.api.nvim_create_autocmd("BufWritePre", {
@@ -53,7 +51,8 @@ local lsp_configurations = function()
           command = "EslintFixAll",
         })
       end,
-    }
+    },
+    ["null-ls"] = {}
   }
 end
 
@@ -65,6 +64,20 @@ return {
     enabled = vim.g.vscode == nil,
     config = function()
       require "mason".setup()
+    end
+  },
+
+  {
+    "nvimtools/none-ls.nvim",
+    config = function()
+      local null_ls = require "null-ls"
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.formatting.stylua,
+          null_ls.builtins.formatting.prettierd,
+          null_ls.builtins.completion.spell,
+        },
+      })
     end
   },
 
