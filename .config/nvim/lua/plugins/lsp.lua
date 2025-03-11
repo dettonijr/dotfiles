@@ -57,6 +57,14 @@ local lsp_configurations = function()
   }
 end
 
+local get_table_keys = function(tab)
+  local keyset = {}
+  for k,v in pairs(tab) do
+    keyset[#keyset + 1] = k
+  end
+  return keyset
+end
+
 return {
   -- Repo and package manager with LSPs, linters, formatters, DAPs
   {
@@ -89,7 +97,7 @@ return {
     enabled = vim.g.vscode == nil,
     config = function()
       require "mason-lspconfig".setup({
-        ensure_installed = { "lua_ls", 'ts_ls', 'elixirls', 'clangd' }
+        ensure_installed = get_table_keys(lsp_configurations())
       })
     end
   },
