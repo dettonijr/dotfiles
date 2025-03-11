@@ -43,6 +43,8 @@ local lsp_configurations = function()
     },
     angularls = {
       root_dir = util.root_pattern('angular.json', 'project.json')
+    },
+    html = {
     }
   }
 end
