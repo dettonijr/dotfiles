@@ -45,6 +45,14 @@ local lsp_configurations = function()
       root_dir = util.root_pattern('angular.json', 'project.json')
     },
     html = {
+    },
+    eslint = {
+      on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          buffer = bufnr,
+          command = "EslintFixAll",
+        })
+      end,
     }
   }
 end
