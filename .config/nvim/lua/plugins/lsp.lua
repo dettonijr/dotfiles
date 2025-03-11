@@ -52,7 +52,8 @@ local lsp_configurations = function()
         })
       end,
     },
-    ["null-ls"] = {}
+    ["null-ls"] = {},
+    jsonls = {},
   }
 end
 
