@@ -14,6 +14,11 @@ return {
     end,
   },
 
+
+  {
+    "dlvandenberg/tree-sitter-angular",
+    enabled = vim.g.vscode == nil,
+  },
   -- Copilot
   {
     "zbirenbaum/copilot.lua",
@@ -63,5 +68,15 @@ return {
   {
     "tpope/vim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
+  },
+
+--  {
+--    "tpope/vim-fugitive",
+--    enabled = vim.g.vscode == nil,
+--  }
+
+  {
+    "airblade/vim-gitgutter",
+    enabled = vim.g.vscode == nil,
   }
 }
