@@ -54,6 +54,8 @@ local lsp_configurations = function()
     },
     ["null-ls"] = {},
     jsonls = {},
+    cssls = {},
+    bashls = {},
   }
 end
 
