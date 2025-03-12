@@ -45,7 +45,7 @@ local lsp_configurations = function()
       root_dir = util.root_pattern('angular.json', 'project.json')
     },
     eslint = {
-      on_attach = function(client, bufnr)
+      on_attach = function(_, bufnr)
         vim.api.nvim_create_autocmd("BufWritePre", {
           buffer = bufnr,
           command = "EslintFixAll",
@@ -61,7 +61,7 @@ end
 
 local get_table_keys = function(tab)
   local keyset = {}
-  for k,v in pairs(tab) do
+  for k, _ in pairs(tab) do
     keyset[#keyset + 1] = k
   end
   return keyset
@@ -146,6 +146,7 @@ return {
     enabled = vim.g.vscode == nil,
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-path',
       'neovim/nvim-lspconfig',
       'honza/vim-snippets',
       {
@@ -157,8 +158,8 @@ return {
         dependencies = { "rafamadriz/friendly-snippets" },
         config = function()
           require 'luasnip'.filetype_extend("ex", { "elixir" })
+          require("luasnip.loaders.from_vscode").lazy_load()
         end
-
       }
     },
 
@@ -201,9 +202,9 @@ return {
           -- { name = 'snippy' }, -- For snippy users.
         }, {
           { name = 'buffer' },
+          { name = 'path' },
         })
       })
-
       -- To use git you need to install the plugin petertriho/cmp-git and uncomment lines below
       -- Set configuration for specific filetype.
       --[[ cmp.setup.filetype('gitcommit', {

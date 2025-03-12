@@ -6,6 +6,7 @@ vim.cmd("set expandtab")
 vim.cmd("set ai")
 vim.cmd("set nu")
 vim.cmd("set scrolloff=10")
+vim.cmd("set hlsearch!")
 vim.g.mapleader = ","
 
 vim.opt.undofile = true
@@ -25,7 +26,7 @@ vim.opt.foldcolumn = "0"
 vim.api.nvim_create_autocmd('BufReadPost', { command = "silent! normal! g`\"zz" })
 vim.keymap.set('n', '<C-j>', '5<C-e>5j')
 vim.keymap.set('n', '<C-k>', '5<C-y>5k')
-vim.keymap.set('n', '<leader>vc', '<cmd>tabnew ~/.config/nvim/init.lua<cr>')
+vim.keymap.set('t', '<esc>', [[<C-\><C-n>]])
 
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
