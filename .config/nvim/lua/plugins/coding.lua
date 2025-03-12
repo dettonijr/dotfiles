@@ -76,7 +76,8 @@ return {
 --  }
 
   {
-    "airblade/vim-gitgutter",
+    -- "airblade/vim-gitgutter",
+    "mhinz/vim-signify",
     enabled = vim.g.vscode == nil,
   }
 }
