@@ -6,7 +6,7 @@ vim.cmd("set expandtab")
 vim.cmd("set ai")
 vim.cmd("set nu")
 vim.cmd("set scrolloff=10")
-vim.cmd("set hlsearch!")
+vim.opt.hlsearch = false
 vim.g.mapleader = ","
 
 vim.opt.undofile = true

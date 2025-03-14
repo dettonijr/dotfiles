@@ -42,7 +42,8 @@ local lsp_configurations = function()
       cmd = { "clangd", "--compile-commands-dir=." },
     },
     angularls = {
-      root_dir = util.root_pattern('angular.json', 'project.json')
+      root_dir = util.root_pattern('angular.json', 'project.json'),
+      filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' }
     },
     eslint = {
       on_attach = function(_, bufnr)

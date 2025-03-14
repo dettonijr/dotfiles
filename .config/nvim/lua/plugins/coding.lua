@@ -69,14 +69,29 @@ return {
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
   },
 
-  --  {
-  --    "tpope/vim-fugitive",
-  --    enabled = vim.g.vscode == nil,
-  --  }
-
   {
-    -- "airblade/vim-gitgutter",
     "mhinz/vim-signify",
     enabled = vim.g.vscode == nil,
   },
+
+  {
+    "kdheepak/lazygit.nvim",
+    lazy = true,
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    -- setting the keybinding for LazyGit with 'keys' is recommended in
+    -- order to load the plugin when the command is run for the first time
+    keys = {
+      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+    }
+  }
 }

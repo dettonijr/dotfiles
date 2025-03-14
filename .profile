@@ -1,3 +1,5 @@
+export LANG=C
+
 alias gs='git status'
 alias gp='git pull'
 alias ga='git add'
