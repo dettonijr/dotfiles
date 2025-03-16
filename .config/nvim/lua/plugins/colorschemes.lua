@@ -11,8 +11,10 @@ return {
   { 'morhetz/gruvbox' },
   { 'rebelot/kanagawa.nvim' },
   { 'NLKNguyen/papercolor-theme' },
+  { 'lunacookies/vim-colors-xcode' },
+  { 'maxmx03/solarized.nvim' },
+
   { 'TaDaa/vimade' },
-  { 'lunacookies/vim-colors-xcode'},
 
   {
     "vague2k/huez.nvim",
