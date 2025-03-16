@@ -52,7 +52,6 @@ local lsp_configurations = function()
         })
       end,
     },
-    ["null-ls"] = {},
     jsonls = {},
     cssls = {},
     bashls = {},
@@ -79,27 +78,20 @@ return {
   },
 
   {
-    "nvimtools/none-ls.nvim",
+    'stevearc/conform.nvim',
+    opts = {},
     config = function()
-      local null_ls = require "null-ls"
-      null_ls.setup({
-        sources = {
-          -- null_ls.builtins.formatting.stylua,
-          null_ls.builtins.formatting.prettierd,
-          null_ls.builtins.completion.spell,
+      require("conform").setup({
+        formatters_by_ft = {
+          lua = { "stylua" },
+          -- Conform will run multiple formatters sequentially
+          python = { "isort", "black" },
+          -- You can customize some of the format options for the filetype (:help conform.format)
+          rust = { "rustfmt", lsp_format = "fallback" },
+          -- Conform will run the first available formatter
+          javascript = { "prettierd", "prettier", stop_after_first = true },
+          typescript = { "prettierd", "eslint_d", "prettier", stop_after_first = true },
         },
-      })
-    end
-  },
-
-  -- Makes sure languages servers are installed with Mason
-  {
-    "williamboman/mason-lspconfig.nvim",
-    version = "*",
-    enabled = vim.g.vscode == nil,
-    config = function()
-      require "mason-lspconfig".setup({
-        ensure_installed = get_table_keys(lsp_configurations())
       })
     end
   },
@@ -109,6 +101,33 @@ return {
     'neovim/nvim-lspconfig',
     version = "*",
     enabled = vim.g.vscode == nil,
+    dependencies = {
+      -- Makes sure languages servers are installed with Mason before lspconfig runs
+      {
+        "williamboman/mason-lspconfig.nvim",
+        version = "*",
+        config = function()
+          require "mason-lspconfig".setup({
+            ensure_installed = get_table_keys(lsp_configurations())
+          })
+        end
+      },
+      {
+        'nvimdev/lspsaga.nvim',
+        config = function()
+          require('lspsaga').setup({
+            ui = {
+              -- disable lightbulb
+              code_action = ''
+            }
+          })
+        end,
+        dependencies = {
+          'nvim-treesitter/nvim-treesitter',
+          'nvim-tree/nvim-web-devicons',
+        }
+      }
+    },
     config = function()
       -- Reserve a space in the gutter
       -- This will avoid an annoying layout shift in the screen

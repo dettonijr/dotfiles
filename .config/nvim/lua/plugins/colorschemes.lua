@@ -12,6 +12,7 @@ return {
   { 'rebelot/kanagawa.nvim' },
   { 'NLKNguyen/papercolor-theme' },
   { 'TaDaa/vimade' },
+  { 'lunacookies/vim-colors-xcode'},
 
   {
     "vague2k/huez.nvim",

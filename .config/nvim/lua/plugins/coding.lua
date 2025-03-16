@@ -69,14 +69,14 @@ return {
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
   },
 
---  {
---    "tpope/vim-fugitive",
---    enabled = vim.g.vscode == nil,
---  }
+  --  {
+  --    "tpope/vim-fugitive",
+  --    enabled = vim.g.vscode == nil,
+  --  }
 
   {
     -- "airblade/vim-gitgutter",
     "mhinz/vim-signify",
     enabled = vim.g.vscode == nil,
-  }
+  },
 }
