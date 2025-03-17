@@ -92,6 +92,7 @@ return {
           -- Conform will run the first available formatter
           javascript = { "prettierd", "prettier", stop_after_first = true },
           typescript = { "prettierd", "eslint_d", "prettier", stop_after_first = true },
+          html = { "prettierd", "eslint_d", "prettier", stop_after_first = true },
         },
       })
     end

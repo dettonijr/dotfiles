@@ -21,14 +21,14 @@ return {
   -- Copilot
   {
     "zbirenbaum/copilot.lua",
-    enabled = vim.g.vscode == nil,
+    enabled = vim.g.vscode == nil and vim.fn.hostname() == "LAMS0044",
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
       require("copilot").setup({
         suggestion = {
           enabled = true,
-          auto_trigger = false,
+          auto_trigger = true,
           hide_during_completion = true,
           debounce = 75,
           keymap = {
