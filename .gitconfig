@@ -1,10 +1,10 @@
 [diff]
-	tool = vimdiff
+  tool = vimdiff
 [user]
-	name = Claudio Dettoni
-    email = cd611@cl.cam.ac.uk
+  name = Claudio Dettoni
+  email = cd611@cl.cam.ac.uk
 [core]
-    pager = less -FXRS -x4
+  pager = less -FXRS -x4
 [alias]
-	d = difftool
-	yolo = !git add -A && git commit -m \"$(curl -s http://whatthecommit.com/index.txt)\"
+  d = difftool
+  yolo = !git add -A && git commit -m \"$(curl -s http://whatthecommit.com/index.txt)\"
