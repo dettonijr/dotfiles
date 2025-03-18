@@ -65,6 +65,25 @@ return {
   },
 
   {
+    "mbbill/undotree",
+    config = function()
+      vim.g.undotree_WindowLayout = 2
+      vim.keymap.set('n', '<leader>u', ':VimadeToggle<CR>:UndotreeToggle<CR><C-w>h')
+      if vim.fn.has('persistent_undo') == 1 then
+        local target_path = vim.fn.expand('~/.undodir')
+
+        -- create the directory and any parent directories if the location does not exist
+        if not vim.fn.isdirectory(target_path) then
+          vim.fn.mkdir(target_path, 'p', 0700)
+        end
+
+        vim.o.undodir = target_path
+        vim.o.undofile = true
+      end
+    end
+  },
+
+  {
     "tpope/vim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
   },
