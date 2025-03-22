@@ -25,7 +25,7 @@ return {
   -- Copilot
   {
     "zbirenbaum/copilot.lua",
-    enabled = vim.g.vscode == nil and vim.fn.hostname() == "LAMS0044",
+    enabled = vim.g.vscode == nil,
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
@@ -36,14 +36,14 @@ return {
           hide_during_completion = true,
           debounce = 75,
           keymap = {
-            accept = "<C-CR>",
+            accept = "<M-l>",
             accept_word = false,
-            accept_line = "<C-l>",
-            next = "<C-]>",
-            prev = "<C-[>",
-            dismiss = "<ESC>",
-          },
-        },
+            accept_line = false,
+            next = "<M-]>",
+            prev = "<M-[>",
+            dismiss = "<C-]>",
+          }
+        }
       })
     end,
   },

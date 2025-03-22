@@ -57,6 +57,7 @@ local lsp_configurations = function()
     jsonls = {},
     cssls = {},
     bashls = {},
+    rust_analyzer = {},
   }
 end
 
