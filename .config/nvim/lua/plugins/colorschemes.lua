@@ -14,8 +14,6 @@ return {
   { 'lunacookies/vim-colors-xcode' },
   { 'maxmx03/solarized.nvim' },
 
-  { 'TaDaa/vimade' },
-
   {
     "vague2k/huez.nvim",
     enabled = vim.g.vscode == nil,

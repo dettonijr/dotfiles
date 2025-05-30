@@ -58,6 +58,7 @@ local lsp_configurations = function()
     cssls = {},
     bashls = {},
     rust_analyzer = {},
+    groovyls = {},
   }
 end
 
@@ -86,14 +87,14 @@ return {
     config = function()
       require("conform").setup({
         formatters_by_ft = {
-          lua = { "stylua" },
+          lua = { lsp_format = "prefer" },
           -- Conform will run multiple formatters sequentially
           python = { "isort", "black" },
           -- You can customize some of the format options for the filetype (:help conform.format)
           rust = { "rustfmt", lsp_format = "fallback" },
           -- Conform will run the first available formatter
           javascript = { "prettierd", "prettier", stop_after_first = true },
-          typescript = { "prettierd", "eslint_d", "prettier", stop_after_first = true },
+          typescript = { "eslint_d", "prettierd", stop_after_first = true },
           html = { "prettierd", "eslint_d", "prettier", stop_after_first = true },
         },
       })
@@ -171,6 +172,7 @@ return {
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      'hrsh7th/cmp-buffer',
       'neovim/nvim-lspconfig',
       'honza/vim-snippets',
       {
