@@ -13,6 +13,12 @@ return {
   { 'NLKNguyen/papercolor-theme' },
   { 'lunacookies/vim-colors-xcode' },
   { 'maxmx03/solarized.nvim' },
+  { 'projekt0n/github-nvim-theme'},
+  { 'navarasu/onedark.nvim' },
+  { 'rose-pine/neovim', name = 'rose-pine' },
+  { 'sainnhe/gruvbox-material' },
+  { 'shaunsingh/nord.nvim' },
+  { 'olimorris/onedarkpro.nvim'},
 
   {
     "vague2k/huez.nvim",
