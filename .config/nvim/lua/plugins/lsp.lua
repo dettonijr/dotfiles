@@ -89,6 +89,10 @@ return {
       require("mason-lspconfig").setup({
         ensure_installed = get_table_keys(lsp_configurations()),
       })
+
+      vim.diagnostic.config({
+        virtual_lines = true
+      })
     end,
   },
 
