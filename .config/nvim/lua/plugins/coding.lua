@@ -78,7 +78,7 @@ return {
 
         -- create the directory and any parent directories if the location does not exist
         if not vim.fn.isdirectory(target_path) then
-          vim.fn.mkdir(target_path, "p", 0700)
+          vim.cmd("!mkdir -p 0700" .. target_path)
         end
 
         vim.o.undodir = target_path
