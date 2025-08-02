@@ -31,6 +31,9 @@ vim.api.nvim_create_autocmd("BufReadPost", { command = 'silent! normal! g`"zz' }
 -- Easy exit from terminal with esc
 vim.keymap.set("t", "<esc>", [[<C-\><C-n>]])
 
+-- swap true false
+vim.keymap.set("n", "~", ":s/\\v(true|false)/\\=submatch(0) == 'true' ? 'false' : 'true'/<CR>:nohl<CR>")
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 -- Auto-install lazy.nvim if not present
