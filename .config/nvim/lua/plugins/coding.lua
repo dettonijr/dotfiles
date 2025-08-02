@@ -41,6 +41,18 @@ return {
       },
     },
   },
+  {
+    "vigoux/notifier.nvim",
+    config = function()
+      -- conflict with notifier from snacks
+      ---@diagnostic disable-next-line: undefined-field
+      require("notifier").setup({
+        components = { -- Order of the components to draw from top to bottom (first nvim notifications, then lsp)
+          "lsp", -- LSP status updates
+        },
+      })
+    end,
+  },
 
   {
     "dlvandenberg/tree-sitter-angular",
@@ -138,7 +150,7 @@ return {
           frecency = true,
         },
       },
-      notifier = { enabled = true },
+      notifier = { enabled = false },
       quickfile = { enabled = true },
       scope = { enabled = true },
       scroll = { enabled = false },
