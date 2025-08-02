@@ -6,6 +6,7 @@ npm --version
 
 brew install neovim
 brew install cmake
+brew install lazygit
 
 ln -s $HOME/dotfiles/.profile $HOME || true 
 ln -s $HOME/dotfiles/.wezterm.lua $HOME || true

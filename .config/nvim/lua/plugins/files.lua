@@ -1,72 +1,50 @@
 return {
   -- File Search
   {
-    'nvim-telescope/telescope.nvim',
+    "nvim-telescope/telescope.nvim",
     enabled = vim.g.vscode == nil, -- vim.g.vscode,
     version = "*",
     dependencies = {
-      'nvim-lua/plenary.nvim',
+      "nvim-lua/plenary.nvim",
       {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
-      }
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
+      },
     },
 
     config = function()
-      require('telescope').setup {
+      require("telescope").setup({
         extensions = {
           fzf = {
-            fuzzy = true,                   -- false will only do exact matching
+            fuzzy = true, -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true,    -- override the file sorter
-            case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+            override_file_sorter = true, -- override the file sorter
+            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
-          }
+          },
         },
         pickers = {
           colorscheme = {
-            enable_preview = true
-          }
-        }
-      }
+            enable_preview = true,
+          },
+        },
+      })
       -- To get fzf loaded and working with telescope, you need to call
       -- load_extension, somewhere after setup function:
-      require('telescope').load_extension('fzf')
+      require("telescope").load_extension("fzf")
 
-
-      local builtin = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+      local builtin = require("telescope.builtin")
+      vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
+      vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
       vim.keymap.set("n", "<Leader>fr", ":Telescope oldfiles<CR>", { noremap = true, silent = true })
 
       -- vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
       -- vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
-    end
+    end,
   },
 
-
-  -- File Explorer
-  -- {
-  --   "nvim-neo-tree/neo-tree.nvim",
-  --   enabled = vim.g.vscode == nil, -- vim.g.vscode,
-  --   branch = "v3.x",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-  --     "MunifTanjim/nui.nvim",
-  --     -- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
-  --   },
-  --   config = function()
-  --     vim.keymap.set('n', '<leader>n', ':Neotree filesystem toggle left<CR>')
-  --     require("neo-tree").setup({
-  --       filesytem = {
-  --         follow_current_file = { enabled = true }
-  --       }
-  --     })
-  --   end
-  -- },
   {
-    'stevearc/oil.nvim',
+    "stevearc/oil.nvim",
     enabled = vim.g.vscode == nil, -- vim.g.vscode,
     tag = "v2.15.0",
     opts = {},
