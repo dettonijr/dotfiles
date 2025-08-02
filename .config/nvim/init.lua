@@ -23,9 +23,12 @@ vim.opt.foldlevel = 99
 vim.opt.foldnestmax = 4
 vim.opt.foldcolumn = "0"
 
+vim.g.snacks_animate = false
+
+-- Open file in the last position
 vim.api.nvim_create_autocmd("BufReadPost", { command = 'silent! normal! g`"zz' })
-vim.keymap.set("n", "<C-j>", "5<C-e>5j")
-vim.keymap.set("n", "<C-k>", "5<C-y>5k")
+
+-- Easy exit from terminal with esc
 vim.keymap.set("t", "<esc>", [[<C-\><C-n>]])
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
