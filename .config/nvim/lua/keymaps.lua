@@ -35,3 +35,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, "[C]ode [D]iagnostic")
   end,
 })
+
+vim.keymap.set("n", "<leader>tu", ":SignifyHunkUndo<CR>", { desc = "Gi[T] hunk [U]ndo" })
+vim.keymap.set("n", "<leader>th", ":SignifyHunkDiff<CR>", { desc = "Gi[T] [H]unk diff" })
+vim.keymap.set("n", "<leader>td", ":SignifyDiff<CR>", { desc = "Gi[T] file [D]iff" })
