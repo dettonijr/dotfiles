@@ -38,3 +38,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.keymap.set("n", "<leader>tu", ":SignifyHunkUndo<CR>", { desc = "Gi[T] hunk [U]ndo" })
 vim.keymap.set("n", "<leader>th", ":SignifyHunkDiff<CR>", { desc = "Gi[T] [H]unk diff" })
 vim.keymap.set("n", "<leader>td", ":SignifyDiff<CR>", { desc = "Gi[T] file [D]iff" })
+vim.keymap.set("n", "<leader><space>", ":lua Snacks.picker.smart()<CR>", { desc = "Smart Find Files" })
+
+vim.keymap.set("n", "<leader>/", ":lua Snacks.picker.grep()<CR>", { desc = "Grep" })
+vim.keymap.set("n", "<leader>:", ":lua Snacks.picker.command_history()<CR>", { desc = "Command History" })
+vim.keymap.set("n", "<leader>n", ":lua Snacks.picker.notifications()<CR>", { desc = "Notification History" })
+vim.keymap.set("n", "<leader>e", ":lua Snacks.explorer()<CR>", { desc = "File Explorer" })
+vim.keymap.set("n", "<leader>fb", ":lua Snacks.picker.buffers()<CR>", { desc = "Buffers" })
+vim.keymap.set(
+  "n",
+  "<leader>fc",
+  ":lua Snacks.picker.files({ cwd = vim.fn.stdpath('config') })<CR>",
+  { desc = "Find Config File" }
+)
+vim.keymap.set("n", "<leader>ff", ":lua Snacks.picker.files()<CR>", { desc = "Find Files" })
+vim.keymap.set("n", "<leader>fg", ":lua Snacks.picker.git_files()<CR>", { desc = "Find Git Files" })
+vim.keymap.set("n", "<leader>fp", ":lua Snacks.picker.projects()<CR>", { desc = "Projects" })
+vim.keymap.set("n", "<leader>fr", ":lua Snacks.picker.recent()<CR>", { desc = "Recent" })
