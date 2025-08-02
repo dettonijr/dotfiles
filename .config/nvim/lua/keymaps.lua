@@ -13,10 +13,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.keymap.set(mode, lhs, rhs, options)
     end
 
-    map("n", "<leader>ch", function()
-      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-    end)
-
     map("n", "K", vim.lsp.buf.hover, "Show [H]over")
     map("n", "gd", vim.lsp.buf.definition, "Go to [D]efinition")
     map("n", "gD", vim.lsp.buf.declaration, "Go to [D]eclaration")
@@ -33,6 +29,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "<leader>cd", function()
       vim.diagnostic.open_float({ float_bufnr = 0, scope = "line" })
     end, "[C]ode [D]iagnostic")
+    map("n", "<leader>ch", function()
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+    end, "[C]ode [H]int toggle")
   end,
 })
 
