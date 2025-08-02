@@ -6,8 +6,9 @@ vim.cmd("set expandtab")
 vim.cmd("set ai")
 vim.cmd("set nu")
 vim.cmd("set scrolloff=10")
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.g.mapleader = ","
+vim.opt.relativenumber = true
 
 vim.opt.undofile = true
 vim.opt.ignorecase = true
@@ -31,16 +32,16 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 -- Auto-install lazy.nvim if not present
 if not vim.uv.fs_stat(lazypath) then
-	print("Installing lazy.nvim....")
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
-	print("Done.")
+  print("Installing lazy.nvim....")
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+  print("Done.")
 end
 
 vim.opt.rtp:prepend(lazypath)

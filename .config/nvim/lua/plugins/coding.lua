@@ -15,7 +15,7 @@ return {
   },
 
   {
-    "nvim-treesitter/playground"
+    "nvim-treesitter/playground",
   },
 
   {
@@ -42,8 +42,8 @@ return {
             next = "<M-]>",
             prev = "<M-[>",
             dismiss = "<C-]>",
-          }
-        }
+          },
+        },
       })
     end,
   },
@@ -55,15 +55,15 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
       require("treesitter-context").setup()
-    end
+    end,
   },
 
   -- Auto pair "" [] ()
   {
-    'windwp/nvim-autopairs',
+    "windwp/nvim-autopairs",
     enabled = vim.g.vscode == nil,
     event = "InsertEnter",
-    config = true
+    config = true,
     -- use opts = {} for passing setup options
     -- this is equivalent to setup({}) function
   },
@@ -72,19 +72,24 @@ return {
     "mbbill/undotree",
     config = function()
       vim.g.undotree_WindowLayout = 2
-      vim.keymap.set('n', '<leader>u', ':UndotreeToggle<C-w>h')
-      if vim.fn.has('persistent_undo') == 1 then
-        local target_path = vim.fn.expand('~/.undodir')
+      vim.keymap.set("n", "<leader>u", ":UndotreeToggle<C-w>h")
+      if vim.fn.has("persistent_undo") == 1 then
+        local target_path = vim.fn.expand("~/.undodir")
 
         -- create the directory and any parent directories if the location does not exist
         if not vim.fn.isdirectory(target_path) then
-          vim.fn.mkdir(target_path, 'p', 0700)
+          vim.fn.mkdir(target_path, "p", 0700)
         end
 
         vim.o.undodir = target_path
         vim.o.undofile = true
       end
-    end
+    end,
+  },
+
+  {
+    "sschleemilch/slimline.nvim",
+    opts = {},
   },
 
   {
@@ -114,7 +119,7 @@ return {
     -- setting the keybinding for LazyGit with 'keys' is recommended in
     -- order to load the plugin when the command is run for the first time
     keys = {
-      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
-    }
-  }
+      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+    },
+  },
 }

@@ -13,6 +13,7 @@ local lsp_servers = {
 }
 
 vim.lsp.enable(lsp_servers)
+vim.diagnostic.config({ virtual_lines = { current_line = true } })
 
 return {
   -- Repo and package manager with LSPs, linters, formatters, DAPs
