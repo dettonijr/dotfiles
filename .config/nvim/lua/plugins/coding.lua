@@ -94,16 +94,6 @@ return {
     end,
   },
 
-  -- Auto pair "" [] ()
-  {
-    "windwp/nvim-autopairs",
-    enabled = vim.g.vscode == nil,
-    event = "InsertEnter",
-    config = true,
-    -- use opts = {} for passing setup options
-    -- this is equivalent to setup({}) function
-  },
-
   {
     "mbbill/undotree",
     config = function()
@@ -141,8 +131,7 @@ return {
         },
       },
       explorer = { enabled = true },
-      indent = { enabled = true },
-      input = { enabled = true },
+      indent = { enabled = false },
       picker = {
         enabled = true,
         -- layout = { preset = "telescope", layout = { position = "top" } },
@@ -152,7 +141,7 @@ return {
       },
       notifier = { enabled = false },
       quickfile = { enabled = true },
-      scope = { enabled = true },
+      scope = { enabled = false },
       scroll = { enabled = false },
       statuscolumn = { enabled = true },
       words = { enabled = true },
@@ -163,6 +152,7 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
+      preset = "helix",
       -- your configuration comes here
       -- or leave it empty to use the default settings
       -- refer to the configuration section below

@@ -10,6 +10,7 @@ local lsp_servers = {
   "bashls",
   "groovyls",
   "rust_analyzer",
+  "emmet-ls",
 }
 
 vim.lsp.enable(lsp_servers)
@@ -58,6 +59,13 @@ return {
     version = "*",
     enabled = vim.g.vscode == nil,
     dependencies = {},
+    init_options = {
+      userLanguages = {
+        eelixir = "html-eex",
+        eruby = "erb",
+        rust = "html",
+      },
+    },
   },
 
   -- autocomplete and snippets
