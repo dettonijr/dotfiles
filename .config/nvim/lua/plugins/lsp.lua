@@ -3,7 +3,6 @@ local lsp_servers = {
   "ts_ls",
   "clangd",
   "angularls",
-  "eslint",
   "html",
   "jsonls",
   "cssls",
@@ -13,17 +12,53 @@ local lsp_servers = {
   "emmet-ls",
 }
 
-vim.lsp.enable(lsp_servers)
-vim.diagnostic.config({ virtual_lines = { current_line = true } })
-
 return {
-  -- Repo and package manager with LSPs, linters, formatters, DAPs
+  -- configures nvim to use LSP servers
   {
-    "williamboman/mason.nvim",
+    "neovim/nvim-lspconfig",
     version = "*",
     enabled = vim.g.vscode == nil,
+    dependencies = {},
+    init_options = {
+      userLanguages = {
+        eelixir = "html-eex",
+        eruby = "erb",
+        rust = "html",
+      },
+    },
     config = function()
-      require("mason").setup()
+      vim.lsp.enable(lsp_servers)
+      vim.diagnostic.config({ virtual_lines = { current_line = true } })
+    end,
+  },
+
+  -- Repo and package manager with LSPs, linters, formatters, DAPs
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    dependencies = {
+      "mason-org/mason-lspconfig.nvim",
+      {
+        "williamboman/mason.nvim",
+        version = "*",
+        enabled = vim.g.vscode == nil,
+        config = function()
+          require("mason").setup()
+        end,
+      },
+    },
+    config = function()
+      -- TODO: Get this directly from conform
+      local formatters = {
+        "stylua",
+        "prettierd",
+        "isort",
+        "black",
+        "rustfmt",
+        "eslint",
+      }
+      require("mason-tool-installer").setup({
+        ensure_installed = vim.list_extend(vim.deepcopy(lsp_servers), formatters),
+      })
     end,
   },
 
@@ -45,27 +80,12 @@ return {
           -- You can customize some of the format options for the filetype (:help conform.format)
           rust = { "rustfmt", lsp_format = "fallback" },
           -- Conform will run the first available formatter
-          javascript = { "prettierd", stop_after_first = true },
-          typescript = { "eslint_d", "prettierd", stop_after_first = true },
-          html = { "prettierd", "eslint_d", stop_after_first = true },
+          javascript = { "prettierd" },
+          typescript = { "eslint" },
+          html = { "prettierd", "eslint" },
         },
       })
     end,
-  },
-
-  -- configures nvim to use LSP servers
-  {
-    "neovim/nvim-lspconfig",
-    version = "*",
-    enabled = vim.g.vscode == nil,
-    dependencies = {},
-    init_options = {
-      userLanguages = {
-        eelixir = "html-eex",
-        eruby = "erb",
-        rust = "html",
-      },
-    },
   },
 
   -- autocomplete and snippets
