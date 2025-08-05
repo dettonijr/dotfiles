@@ -52,6 +52,7 @@ vim.keymap.set(
   { desc = "Find Config File" }
 )
 vim.keymap.set("n", "<leader>ff", ":lua Snacks.picker.files()<CR>", { desc = "Find Files" })
-vim.keymap.set("n", "<leader>fg", ":lua Snacks.picker.git_files()<CR>", { desc = "Find Git Files" })
+vim.keymap.set("n", "<leader>ft", ":lua Snacks.picker.git_files()<CR>", { desc = "Find Git Files" })
+vim.keymap.set("n", "<leader>fg", ":lua Snacks.picker.grep()<CR>", { desc = "Find Grep" })
 vim.keymap.set("n", "<leader>fp", ":lua Snacks.picker.projects()<CR>", { desc = "Projects" })
 vim.keymap.set("n", "<leader>fr", ":lua Snacks.picker.recent()<CR>", { desc = "Recent" })

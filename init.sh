@@ -4,7 +4,7 @@ set -e
 
 npm --version
 
-brew install neovim cmake lazygit luarocks cowsay
+brew install neovim cmake lazygit luarocks cowsay fd
 
 ln -s $HOME/dotfiles/.profile $HOME || true 
 ln -s $HOME/dotfiles/.wezterm.lua $HOME || true

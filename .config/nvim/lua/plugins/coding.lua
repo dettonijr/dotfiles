@@ -138,6 +138,12 @@ return {
         matcher = {
           frecency = true,
         },
+        formatters = {
+          file = {
+            filename_first = true,
+            truncate = 100,
+          },
+        },
       },
       notifier = { enabled = false },
       quickfile = { enabled = true },
