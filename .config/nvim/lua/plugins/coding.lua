@@ -149,7 +149,9 @@ return {
       quickfile = { enabled = true },
       scope = { enabled = false },
       scroll = { enabled = false },
-      statuscolumn = { enabled = true },
+      statuscolumn = {
+        enabled = false,
+      },
       words = { enabled = true },
     },
   },
@@ -187,7 +189,7 @@ return {
   },
 
   {
-    "mhinz/vim-signify",
+    "lewis6991/gitsigns.nvim",
     enabled = vim.g.vscode == nil,
   },
 

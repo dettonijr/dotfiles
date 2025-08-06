@@ -35,9 +35,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
-vim.keymap.set("n", "<leader>tu", ":SignifyHunkUndo<CR>", { desc = "Gi[T] hunk [U]ndo" })
-vim.keymap.set("n", "<leader>th", ":SignifyHunkDiff<CR>", { desc = "Gi[T] [H]unk diff" })
-vim.keymap.set("n", "<leader>td", ":SignifyDiff<CR>", { desc = "Gi[T] file [D]iff" })
+-- vim.keymap.set("n", "<leader>tu", ":SignifyHunkUndo<CR>", { desc = "Gi[T] hunk [U]ndo" })
+-- vim.keymap.set("n", "<leader>th", ":SignifyHunkDiff<CR>", { desc = "Gi[T] [H]unk diff" })
+-- vim.keymap.set("n", "<leader>td", ":SignifyDiff<CR>", { desc = "Gi[T] file [D]iff" })
+vim.keymap.set("n", "<leader>tu", ":Gitsigns reset_hunk<CR>", { desc = "Gi[T] hunk [U]ndo" })
+vim.keymap.set("n", "<leader>th", ":Gitsigns preview_hunk_inline<CR>", { desc = "Gi[T] [H]unk diff" })
+vim.keymap.set("n", "<leader>td", ":Gitsigns diffthis<CR>", { desc = "Gi[T] file [D]iff" })
+vim.keymap.set("n", "<leader>tc", ":Gitsigns setqflist<CR>", { desc = "Gi[T] [C]hanges" })
+vim.keymap.set("n", "<leader>tb", ":Gitsigns blame<CR>", { desc = "Gi[T] [B]lame" })
 vim.keymap.set("n", "<leader><space>", ":lua Snacks.picker.smart()<CR>", { desc = "Smart Find Files" })
 
 vim.keymap.set("n", "<leader>/", ":lua Snacks.picker.grep()<CR>", { desc = "Grep" })
