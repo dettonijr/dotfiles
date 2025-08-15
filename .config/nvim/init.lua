@@ -33,6 +33,7 @@ vim.keymap.set("t", "<esc>", [[<C-\><C-n>]])
 
 -- swap true false
 vim.keymap.set("n", "~", ":s/\\v(true|false)/\\=submatch(0) == 'true' ? 'false' : 'true'/<CR>:nohl<CR>")
+-- vim.o.statuscolumn = "%!v:lua.require('statuscolumn').myStatuscolumn()"
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 

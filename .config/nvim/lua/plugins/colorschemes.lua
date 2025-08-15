@@ -2,9 +2,21 @@ return {
   { "folke/tokyonight.nvim" },
   { "sainnhe/everforest" },
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-  { "EdenEast/nightfox.nvim" },
+  {
+    "EdenEast/nightfox.nvim",
+    config = function()
+      require("nightfox").setup({
+        options = {
+          styles = {
+            comments = "italic,altfont",
+            keywords = "bold",
+            types = "italic,bold",
+          },
+        },
+      })
+    end,
+  },
   { "Mofiqul/vscode.nvim" },
-  { "scottmckendry/cyberdream.nvim" },
   { "sainnhe/sonokai" },
   { "ribru17/bamboo.nvim" },
   { "tiagovla/tokyodark.nvim" },
@@ -19,6 +31,8 @@ return {
   { "sainnhe/gruvbox-material" },
   { "shaunsingh/nord.nvim" },
   { "olimorris/onedarkpro.nvim" },
+  { "paul-han-gh/tomorrow.nvim" },
+  { "deparr/tairiki.nvim" },
 
   {
     "vague2k/huez.nvim",
@@ -28,7 +42,50 @@ return {
     branch = "stable",
     event = "UIEnter",
     config = function()
-      require("huez").setup({})
+      require("huez").setup({
+        exclude = {
+          "desert",
+          "evening",
+          "industry",
+          "koehler",
+          "morning",
+          "murphy",
+          "pablo",
+          "peachpuff",
+          "ron",
+          "shine",
+          "slate",
+          "torte",
+          "zellner",
+          "blue",
+          "darkblue",
+          "delek",
+          "quiet",
+          "elflord",
+          "habamax",
+          "lunaperche",
+          "zaibatsu",
+          "wildcharm",
+          "sorbet",
+          "vim",
+          "rose-pine-dawn",
+          "onelight",
+          "kanagawa-lotus",
+          "github_light",
+          "github_light_colorblind",
+          "github_light_default",
+          "github_light_high_contrast",
+          "github_light_tritanopia",
+          "dayfox",
+          "dawnfox",
+          "catppuccin-latte",
+          "bamboo-light",
+          "tairiki-light",
+          "tokyonight-day",
+          "xcodelight",
+          "xcodelighthc",
+        },
+      })
     end,
   },
   -- {
