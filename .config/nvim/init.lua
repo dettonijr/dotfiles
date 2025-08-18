@@ -9,6 +9,7 @@ vim.cmd("set scrolloff=10")
 vim.opt.hlsearch = true
 vim.g.mapleader = ","
 vim.opt.relativenumber = true
+vim.opt.signcolumn = "yes"
 
 vim.opt.undofile = true
 vim.opt.ignorecase = true

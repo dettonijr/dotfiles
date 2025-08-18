@@ -10,9 +10,20 @@ local lsp_servers = {
   "groovyls",
   "rust_analyzer",
   "emmet-ls",
+  "pyright",
 }
 
 return {
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "LspAttach", -- Or `LspAttach`
+    priority = 1000, -- needs to be loaded in first
+    config = function()
+      require("tiny-inline-diagnostic").setup()
+      vim.diagnostic.config({ virtual_text = false }) -- Only if needed in your configuration, if you already have native LSP diagnostics
+    end,
+  },
+
   -- configures nvim to use LSP servers
   {
     "neovim/nvim-lspconfig",
@@ -28,7 +39,7 @@ return {
     },
     config = function()
       vim.lsp.enable(lsp_servers)
-      vim.diagnostic.config({ virtual_lines = { current_line = true } })
+      -- vim.diagnostic.config({ virtual_lines = { current_line = true } })
     end,
   },
 

@@ -131,7 +131,6 @@ return {
         },
       },
       explorer = { enabled = true },
-      indent = { enabled = false },
       picker = {
         enabled = true,
         -- layout = { preset = "telescope", layout = { position = "top" } },
@@ -145,13 +144,7 @@ return {
           },
         },
       },
-      notifier = { enabled = false },
       quickfile = { enabled = true },
-      scope = { enabled = false },
-      scroll = { enabled = false },
-      statuscolumn = {
-        enabled = false,
-      },
       words = { enabled = true },
     },
   },

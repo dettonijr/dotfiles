@@ -9,6 +9,7 @@ alias glog='git log'
 alias gpush='git push origin HEAD'
 alias gtree='git log --oneline --all --graph --decorate'
 alias n='nvim'
+alias ls="ls --color=auto"
 
 gitgo() {
   git commit -a -m "$*" && git push origin HEAD
